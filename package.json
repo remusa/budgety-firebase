@@ -1,36 +1,76 @@
 {
-  "name": "budgety-firebase",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@types/jest": "24.0.18",
-    "@types/node": "12.7.8",
-    "@types/react": "16.9.4",
-    "@types/react-dom": "16.9.1",
-    "react": "^16.10.1",
-    "react-dom": "^16.10.1",
-    "react-scripts": "3.1.2",
-    "typescript": "3.6.3"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+    "name": "budgety-firebase",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@types/jest": "24.0.18",
+        "@types/node": "12.7.8",
+        "@types/react": "16.9.4",
+        "@types/react-dom": "16.9.1",
+        "react": "^16.10.1",
+        "react-dom": "^16.10.1",
+        "react-scripts": "3.1.2",
+        "typescript": "3.6.3"
+    },
+    "devDependencies": {
+        "cross-env": "^6.0.0",
+        "netlify-cli": "^2.15.0",
+        "node-sass": "^4.12.0"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test2": "react-scripts test",
+        "eject": "react-scripts eject",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "dev": "cross-env NODE_ENV=development react-scripts start",
+        "test": "cross-env NODE_ENV=test npm run test:watch",
+        "test:watch": "cross-env NODE_ENV=test jest --silent --watch",
+        "test:coverage": "cross-env NODE_ENV=test jest --silent --coverage",
+        "deploy": "npm run build && npm run netlify:deploy",
+        "netlify:deploy": "netlify deploy --dir=./build -p -m \"$(git log -1 --pretty=%B)\""
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "//eslintConfig": {
+        "extends": [
+            "wesbos"
+        ]
+    },
+    "//jest": {
+        "testEnvironment": "jsdom",
+        "testPathIgnorePatterns": [
+            "<rootDir>/node_modules/",
+            "<rootDir>/build/",
+            "<rootDir>/dist/"
+        ],
+        "transform": {
+            "\\.(gql|graphql)$": "jest-transform-graphql",
+            ".*": "babel-jest"
+        }
+    },
+    "//babel": {
+        "presets": [
+            "@babel/preset-env",
+            "@babel/preset-react"
+        ],
+        "plugins": [
+            "@babel/plugin-proposal-class-properties",
+            "@babel/plugin-syntax-dynamic-import"
+        ]
+    }
 }
