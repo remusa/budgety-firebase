@@ -9,10 +9,12 @@
         "@types/react-dom": "16.9.1",
         "react": "^16.10.1",
         "react-dom": "^16.10.1",
+        "react-router-dom": "^5.1.1",
         "react-scripts": "3.1.2",
         "typescript": "3.6.3"
     },
     "devDependencies": {
+        "@types/react-router-dom": "^5.1.0",
         "cross-env": "^6.0.0",
         "netlify-cli": "^2.15.0",
         "node-sass": "^4.12.0"
