@@ -7,6 +7,7 @@
         "@types/node": "12.7.8",
         "@types/react": "16.9.4",
         "@types/react-dom": "16.9.1",
+        "firebase": "^7.0.0",
         "react": "^16.10.1",
         "react-dom": "^16.10.1",
         "react-router-dom": "^5.1.1",
@@ -14,6 +15,7 @@
         "typescript": "3.6.3"
     },
     "devDependencies": {
+        "@types/react-router": "^5.1.1",
         "@types/react-router-dom": "^5.1.0",
         "cross-env": "^6.0.0",
         "netlify-cli": "^2.15.0",
@@ -30,7 +32,8 @@
         "test": "cross-env NODE_ENV=test npm run test:watch",
         "test:watch": "cross-env NODE_ENV=test jest --silent --watch",
         "test:coverage": "cross-env NODE_ENV=test jest --silent --coverage",
-        "deploy": "npm run build && npm run netlify:deploy",
+        "deploy": "npm run build && npm run firebase:deploy",
+        "firebase:deploy": "firebase deploy --only hosting:budgety-firebase",
         "netlify:deploy": "netlify deploy --dir=./build -p -m \"$(git log -1 --pretty=%B)\""
     },
     "browserslist": {
